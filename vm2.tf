@@ -1,4 +1,4 @@
-resource "oci_core_instance" "test_instance" {
+resource "oci_core_instance" "test_instance2" {
   availability_domain        = data.oci_identity_availability_domain.ad.name
   compartment_id             = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
   display_name               = "Deep-Instance2"
