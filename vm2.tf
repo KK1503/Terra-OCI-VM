@@ -10,7 +10,7 @@ resource "oci_core_instance" "test_instance2" {
   
   source_details {
     source_type = "image"
-    source_id = "ocid1.image.oc1.ap-mumbai-1.aaaaaaaazh7yy43lvzjot6q5br66wh42gdzz7ek3m5b4eokovk6re3ww77pa"
+    source_id = "ocid1.image.oc1.af-johannesburg-1.aaaaaaaajgtw6w4fgzpumoxil34j3z7iuhfzsmohw75sc6shdhxxm3qix54q"
   }
 
   create_vnic_details {
