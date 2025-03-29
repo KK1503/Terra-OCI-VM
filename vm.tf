@@ -1,27 +1,27 @@
 resource "oci_core_vcn" "vcn" {
   cidr_blocks    = ["10.0.0.0/16"]
   dns_label      = "vcn"
-  compartment_id = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
+  compartment_id = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
   display_name   = "deep-vcn"
 }
 
 resource "oci_core_subnet" "vcn" {
   cidr_block        = "10.0.1.0/24"
-  display_name      = "DeepSubnet"
+  display_name      = "kkSubnet"
   dns_label         = "regionalsubnet"
-  compartment_id    = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
+  compartment_id    = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
   vcn_id            =  oci_core_vcn.vcn.id
 }
 
 data "oci_identity_availability_domain" "ad" {
-  compartment_id = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
+  compartment_id = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
   ad_number      = 1
 }
 
 resource "oci_core_instance" "test_instance" {
   availability_domain        = data.oci_identity_availability_domain.ad.name
-  compartment_id             = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
-  display_name               = "Deep-Instance"
+  compartment_id             = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
+  display_name               = "kk-Instance"
   shape                      = "VM.Standard.E2.1.Micro"
   shape_config {
     ocpus = 1
@@ -38,7 +38,7 @@ resource "oci_core_instance" "test_instance" {
     display_name              = "Primaryvnic"
     assign_public_ip          = true
     assign_private_dns_record = true
-    hostname_label            = "deepinstance"
+    hostname_label            = "kkinstance"
   }
 
   metadata = {
@@ -53,7 +53,7 @@ resource "oci_core_instance" "test_instance" {
 
 resource "oci_core_network_security_group" "test_network_security_group" {
     #Required
-    compartment_id = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
+    compartment_id = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
     vcn_id = oci_core_vcn.vcn.id
 }
 
@@ -75,7 +75,7 @@ resource "oci_core_network_security_group_security_rule" "test_network_security_
 }
 
 resource "oci_core_internet_gateway" "test_internet_gateway" {
-  compartment_id = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
+  compartment_id = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
   display_name   = "TestInternetGateway"
   vcn_id         = oci_core_vcn.vcn.id
 }
