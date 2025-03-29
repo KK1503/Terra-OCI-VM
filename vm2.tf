@@ -1,7 +1,7 @@
 resource "oci_core_instance" "test_instance2" {
   availability_domain        = data.oci_identity_availability_domain.ad.name
-  compartment_id             = "ocid1.tenancy.oc1..aaaaaaaa6yffeusxxwrc4wazqrgufe36s5vdinuaqyh7y76kl2djv3dwqd3a"
-  display_name               = "Deep-Instance2"
+  compartment_id             = "ocid1.compartment.oc1..aaaaaaaax4radpic5dz6hwvcgz3jvk56bxmsl623gvnjzjqmcfsnib3wa22a"
+  display_name               = "kk-Instance2"
   shape                      = "VM.Standard.E2.1.Micro"
   shape_config {
     ocpus = 1
@@ -18,7 +18,7 @@ resource "oci_core_instance" "test_instance2" {
     display_name              = "Primaryvnic"
     assign_public_ip          = true
     assign_private_dns_record = true
-    hostname_label            = "deepinstance2"
+    hostname_label            = "kkinstance2"
   }
 
   metadata = {
