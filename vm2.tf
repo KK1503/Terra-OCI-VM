@@ -18,7 +18,7 @@ resource "oci_core_instance" "test_instance2" {
     display_name              = "Primaryvnic"
     assign_public_ip          = true
     assign_private_dns_record = true
-    hostname_label            = "deepinstance"
+    hostname_label            = "deepinstance2"
   }
 
   metadata = {
