@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Planning in Terraform') {
             steps {
-                sh 'terraform plan'
+                sh 'sudo terraform plan'
             }
         }
         stage('Aplying in Terraform') {
             steps {
-                sh 'terraform apply -auto-approve'
+                sh 'sudo terraform apply -auto-approve'
             }
         }
     }
